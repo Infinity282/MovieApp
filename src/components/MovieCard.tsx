@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
-import { FC, MutableRefObject } from 'react'
+import { forwardRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Movie } from '../interfaces/movie'
+import { ShortMovie } from '../interfaces/movie'
 
 const StyledMovieCard = styled.li({
   display: 'flex',
@@ -29,18 +29,17 @@ const StyledImage = styled.img({
 })
 
 interface MovieCardData {
-  data: Movie
-  blockRef?: MutableRefObject<HTMLLIElement | null>
+  data: ShortMovie
 }
 
-const MovieCard: FC<MovieCardData> = ({ data, blockRef }) => {
+const MovieCard = forwardRef<HTMLLIElement | null, MovieCardData>(function MovieCard({ data }, ref) {
   return (
-    <StyledMovieCard ref={blockRef}>
+    <StyledMovieCard ref={ref}>
       <StyledImageContainer to={`/movie/${data.id}`}>
         <StyledImage loading='lazy' src={`${process.env.REACT_APP_IMAGE_SERVER_URL}/w342${data.poster_path}`} alt={data.title} />
       </StyledImageContainer>
     </StyledMovieCard>
   )
-}
+})
 
 export default MovieCard

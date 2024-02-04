@@ -1,11 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { movieApi } from '../services/MovieService'
-import genresSliceReducer from './reducers/GenreSlice'
+// import genresSliceReducer from './reducers/GenreSlice'
 import searchMovieReducer from './reducers/MovieSlice'
 
 const rootReducer = combineReducers({
   searchMovieReducer,
-  genresSliceReducer,
+  // genresSliceReducer,
   [movieApi.reducerPath]: movieApi.reducer,
 })
 

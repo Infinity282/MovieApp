@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { FC, useState } from 'react'
+import { useState } from 'react'
 import { PagedMovies } from '../interfaces/movie'
 import { movieApi } from '../services/MovieService'
 import ItemCarousel from './ItemCarousel'
@@ -28,7 +28,7 @@ const StyledHeading = styled.p({
   },
 })
 
-const PopularMovies: FC = () => {
+const PopularMovies = () => {
   // TODO Выбор фильма по популярным штукам и обработку ошибок
   const [moviesData, setMoviesData] = useState<PagedMovies | undefined>()
 

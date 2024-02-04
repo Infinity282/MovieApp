@@ -1,9 +1,8 @@
-import { FC } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import MovieDetails from './pages/movie/MovieDetails'
 
-const App: FC = () => {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>

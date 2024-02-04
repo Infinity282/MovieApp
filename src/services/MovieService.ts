@@ -1,29 +1,26 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { FetchAllMovies, MovieGenres, PagedMovies } from '../interfaces/movie'
-import { DefaultMessages } from '../utils/ServiceDefaultMessages'
-import { ServerService } from './ServerService'
+import { Movie, PagedMovies } from '../interfaces/movie'
 
-const fetchGenres = createAsyncThunk('genres/fetch', async (_, thunkApi) => {
-  const response = await ServerService.getFromServer<MovieGenres>('genre/movie/list')
-  if (response) {
-    if ('status_message' in response) {
-      return thunkApi.rejectWithValue(response.status_message)
-    } else {
-      return response
-    }
-  } else {
-    return thunkApi.rejectWithValue(DefaultMessages.unknown)
-  }
-})
+// const fetchGenres = createAsyncThunk('genres/fetch', async (_, thunkApi) => {
+//   const response = await ServerService.getFromServer<MovieGenres>('genre/movie/list')
+//   if (response) {
+//     if ('status_message' in response) {
+//       return thunkApi.rejectWithValue(response.status_message)
+//     } else {
+//       return response
+//     }
+//   } else {
+//     return thunkApi.rejectWithValue(DefaultMessages.unknown)
+//   }
+// })
 
-export const MovieService = {
-  async searchMovies(query: FetchAllMovies) {
-    const response = await ServerService.getFromServer<PagedMovies>('search/movie', query)
-    return response
-  },
-  fetchGenres,
-}
+// export const MovieService = {
+//   async searchMovies(query: FetchAllMovies) {
+//     const response = await ServerService.getFromServer<PagedMovies>('search/movie', query)
+//     return response
+//   },
+//   fetchGenres,
+// }
 
 export const movieApi = createApi({
   reducerPath: 'movieApi',
@@ -54,6 +51,11 @@ export const movieApi = createApi({
     fetchUpcomingMovies: build.query<PagedMovies, void>({
       query: () => ({
         url: '/movie/upcoming',
+      }),
+    }),
+    fetchMovie: build.query<Movie, string | undefined>({
+      query: (id: string | undefined) => ({
+        url: `/movie/${id}`,
       }),
     }),
   }),

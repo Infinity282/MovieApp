@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { useScrollDirection } from '../hooks/useScrollDirection'
 
@@ -46,7 +45,7 @@ const StyledLink = styled(Link)({
   },
 })
 
-const Header: FC = () => {
+const Header = () => {
   const scrollDirection = useScrollDirection()
   const pathname = location.pathname
 

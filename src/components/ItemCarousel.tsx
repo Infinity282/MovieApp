@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { FC, useRef } from 'react'
+import { useRef } from 'react'
 import { PagedMovies } from '../interfaces/movie'
 import MovieCard from './MovieCard'
 
@@ -54,9 +54,9 @@ interface ItemCarouselData {
   data: PagedMovies | undefined
 }
 
-const ItemCarousel: FC<ItemCarouselData> = ({ data }) => {
-  const firstRef = useRef<null | HTMLLIElement>(null)
-  const lastRef = useRef<null | HTMLLIElement>(null)
+const ItemCarousel = ({ data }: ItemCarouselData) => {
+  const firstRef = useRef<HTMLLIElement>(null)
+  const lastRef = useRef<HTMLLIElement>(null)
 
   // const scrollRef = useHorizontalScroll<HTMLUListElement>()
 
@@ -78,9 +78,9 @@ const ItemCarousel: FC<ItemCarouselData> = ({ data }) => {
       <StyledCarouselCardContainer>
         {data?.results.map((item, index) => {
           if (index == 0) {
-            return <MovieCard key={item.id} data={item} blockRef={firstRef} />
+            return <MovieCard key={item.id} data={item} ref={firstRef} />
           } else if (index == data.results.length - 1) {
-            return <MovieCard key={item.id} data={item} blockRef={lastRef} />
+            return <MovieCard key={item.id} data={item} ref={lastRef} />
           }
           return <MovieCard key={item.id} data={item} />
         })}

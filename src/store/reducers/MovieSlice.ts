@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { Movie, PagedMovies } from '../../interfaces/movie'
+import { PagedMovies, ShortMovie } from '../../interfaces/movie'
 
 interface SearchState {
-  results: Movie[]
+  results: ShortMovie[]
   totalResults: number
   totalPages: number
   isFetching: boolean
