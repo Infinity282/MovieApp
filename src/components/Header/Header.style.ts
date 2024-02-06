@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
-import { useScrollDirection } from '../hooks/useScrollDirection'
 
-const StyledHeader = styled.header({
+export const StyledHeader = styled.header({
   position: 'sticky',
   display: 'flex',
+  backgroundColor: '#202020',
   top: '0',
   zIndex: '100',
   gap: '1rem',
@@ -20,7 +20,7 @@ const StyledHeader = styled.header({
   },
 })
 
-const StyledLink = styled(Link)({
+export const StyledLink = styled(Link)({
   display: 'flex',
   height: 'calc(100% - 1rem)',
   width: '10rem',
@@ -44,24 +44,3 @@ const StyledLink = styled(Link)({
     paddingBottom: '0.5rem',
   },
 })
-
-const Header = () => {
-  const scrollDirection = useScrollDirection()
-  const pathname = location.pathname
-
-  return (
-    <StyledHeader className={scrollDirection === 'down' ? 'hidden' : 'show'}>
-      <StyledLink className={pathname.startsWith('/') ? 'active' : ''} to={'/'}>
-        Home
-      </StyledLink>
-      <StyledLink className={pathname.startsWith('/movies') ? 'active' : ''} to={'/movies'}>
-        Movies
-      </StyledLink>
-      <StyledLink className={pathname.startsWith('/tv-shows') ? 'active' : ''} to={'/tv-shows'}>
-        TV Shows
-      </StyledLink>
-    </StyledHeader>
-  )
-}
-
-export default Header

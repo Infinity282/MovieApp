@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { Credits } from '../interfaces/description'
 import { Movie, PagedMovies } from '../interfaces/movie'
 
 // const fetchGenres = createAsyncThunk('genres/fetch', async (_, thunkApi) => {
@@ -56,6 +57,11 @@ export const movieApi = createApi({
     fetchMovie: build.query<Movie, string | undefined>({
       query: (id: string | undefined) => ({
         url: `/movie/${id}`,
+      }),
+    }),
+    fetchMovieCredits: build.query<Credits, string | undefined>({
+      query: (id: string | undefined) => ({
+        url: `/movie/${id}/credits`,
       }),
     }),
   }),

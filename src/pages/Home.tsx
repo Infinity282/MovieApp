@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import Header from '../components/Header'
-import PopularMovies from '../components/PopularMovies'
+import Header from '../components/Header/Header'
+import PopularMovies from '../components/PopularMovies/PopularMovies'
 // import { MovieService } from '../services/MovieService'
 
 const StyledMain = styled.main({

@@ -1,35 +1,10 @@
-import styled from '@emotion/styled'
 import { useState } from 'react'
-import { PagedMovies } from '../interfaces/movie'
-import { movieApi } from '../services/MovieService'
-import ItemCarousel from './ItemCarousel'
-
-const StyledPopularMovies = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
-})
-
-const StyledMovieCategories = styled.div({
-  display: 'flex',
-  justifyContent: 'left',
-  alignItems: 'end',
-  gap: '2rem',
-  padding: '0 4rem',
-})
-
-const StyledHeading = styled.p({
-  display: 'flex',
-  '&.active': {
-    fontSize: '3.5rem',
-  },
-  '&.disabled': {
-    color: '#aeaeae',
-    fontSize: '2.5rem',
-  },
-})
+import { PagedMovies } from '../../interfaces/movie'
+import { movieApi } from '../../services/MovieService'
+import ItemCarousel from '../Carousel/Carousel'
+import { StyledHeading, StyledMovieCategories, StyledPopularMovies } from './PopularMovies.style'
 
 const PopularMovies = () => {
-  // TODO Выбор фильма по популярным штукам и обработку ошибок
   const [moviesData, setMoviesData] = useState<PagedMovies | undefined>()
 
   const { data, isFetching, isError } = movieApi.useFetchPopularMoviesQuery()
